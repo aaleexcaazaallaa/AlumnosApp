@@ -26,6 +26,14 @@ namespace AlumnosApp
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            // TODO: esta línea de código carga datos en la tabla 'practicaDataSet5.Alumnos' Puede moverla o quitarla según sea necesario.
+            this.alumnosTableAdapter2.Fill(this.practicaDataSet5.Alumnos);
+            // TODO: esta línea de código carga datos en la tabla 'practicaDataSet4.Notas' Puede moverla o quitarla según sea necesario.
+            this.notasTableAdapter.Fill(this.practicaDataSet4.Notas);
+            // TODO: esta línea de código carga datos en la tabla 'practicaDataSet3.Evaluaciones' Puede moverla o quitarla según sea necesario.
+            this.evaluacionesTableAdapter1.Fill(this.practicaDataSet3.Evaluaciones);
+            // TODO: esta línea de código carga datos en la tabla 'practicaDataSet2.Alumnos' Puede moverla o quitarla según sea necesario.
+            this.alumnosTableAdapter1.Fill(this.practicaDataSet2.Alumnos);
             // TODO: esta línea de código carga datos en la tabla 'practicaDataSet1.Evaluaciones' Puede moverla o quitarla según sea necesario.
             this.evaluacionesTableAdapter.Fill(this.practicaDataSet1.Evaluaciones);
             eliminarPaneles();
@@ -58,6 +66,12 @@ namespace AlumnosApp
             this.listarEvaluaciones();
         }
 
+        private void mostrarPanelNotas()
+        {
+            panelNotas.Visible = true; 
+            this.cargarAlumnosEnNotas();
+        }
+
         private void eliminarPaneles()
         {
             panelAlumnosAltas.Visible = false;
@@ -65,6 +79,7 @@ namespace AlumnosApp
             panelListarAlumnos.Visible = false;
             panelAltaEvaluacion.Visible = false;
             panelListarEvaluaciones.Visible = false;
+            panelNotas.Visible = false;
         }
 
         private void altaToolStripMenuItem_Click(object sender, EventArgs e)
@@ -311,6 +326,39 @@ namespace AlumnosApp
             catch (Exception ex)
             {
                 MessageBox.Show("No hay evaluacion seleccionada");
+            }
+        }
+
+        private void consultarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            eliminarPaneles();
+            mostrarPanelNotas();
+        }
+
+        private void cargarAlumnosEnNotas()
+        {
+            string connetionString = "Provider=Microsoft.ACE.OLEDB.12.0; Data Source=|DataDirectory|\\practica.accdb";
+            string sentencia = "select Id, Nombre, Apellidos FROM Alumnos";
+            OleDbConnection connection;
+            connection = new OleDbConnection(connetionString);
+            try
+            {
+                connection.Open();
+                this.oleCommand = new OleDbCommand(sentencia, connection);
+                this.oleAdapter = new OleDbDataAdapter(this.oleCommand);
+                this.oleBuilder = new OleDbCommandBuilder(this.oleAdapter);
+                this.dataSet = new DataSet();
+                this.oleAdapter.Fill(dataSet, "Alumnos");
+                this.table = dataSet.Tables["Alumnos"];
+                connection.Close();
+                listBox1.DataSource = dataSet.Tables["Alumnos"];
+                listBox1.ValueMember = "Id";
+                table.Columns.Add("NombreCompleto", typeof(string), "Nombre + ' ' + Apellidos");
+                listBox1.DisplayMember = "NombreCompleto";
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Can not open the connection ! " + ex.ToString());
             }
         }
     }
