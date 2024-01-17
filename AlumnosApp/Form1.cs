@@ -446,57 +446,27 @@ namespace AlumnosApp
 
         private void buttonInsertarNotas_Click(object sender, EventArgs e)
         {
-            DataGridViewRow filaSeleccionada = dataGridView3.CurrentRow;
+            // Verifica y asigna valores a DI, PMDM y AD
+            int fila = dataGridView3.SelectedRows[0].Index;
+                
+            // Acceder a los valores de las celdas en la fila seleccionada
+            DataGridViewRow filaSeleccionada = dataGridView3.Rows[fila];
 
-            if (filaSeleccionada != null)
+            // Acceder al valor de una celda específica (por ejemplo, primera celda en la fila)
+            object DI = filaSeleccionada.Cells[0].Value;
+            object PMDM = filaSeleccionada.Cells[1].Value;
+            object AD = filaSeleccionada.Cells[2].Value;
+
+            // Puedes convertir el valor a un tipo específico si es necesario
+            // Supongamos que la celda contiene un valor entero
+            if (DI != DBNull.Value && DI != null && PMDM != DBNull.Value && PMDM != null && AD != DBNull.Value && AD != null)
             {
-                // Verifica y asigna valores a DI, PMDM y AD
-                int DI, PMDM, AD;
-
-                if (filaSeleccionada.Cells[0].Value != null && filaSeleccionada.Cells[0].Value != DBNull.Value)
-                {
-                    DI = Convert.ToInt32(filaSeleccionada.Cells[0].Value);
-                }
-                else
-                {
-                    MessageBox.Show("El valor en la primera celda no puede ser nulo.");
-                    return; // Sal del método si hay un problema
-                }
-
-                if (filaSeleccionada.Cells[1].Value != null && filaSeleccionada.Cells[1].Value != DBNull.Value)
-                {
-                    PMDM = Convert.ToInt32(filaSeleccionada.Cells[1].Value);
-                }
-                else
-                {
-                    MessageBox.Show("El valor en la segunda celda no puede ser nulo.");
-                    return;
-                }
-
-                if (filaSeleccionada.Cells[2].Value != null && filaSeleccionada.Cells[2].Value != DBNull.Value)
-                {
-                    AD = Convert.ToInt32(filaSeleccionada.Cells[2].Value);
-                }
-                else
-                {
-                    MessageBox.Show("El valor en la tercera celda no puede ser nulo.");
-                    return;
-                }
-
-                // Ahora, puedes continuar con la lógica de validación y llamada a InsertarNotas
-                if (DI <= 0 || DI >= 10 || PMDM <= 0 || PMDM >= 10 || AD <= 0 || AD >= 10)
-                {
-                    MessageBox.Show("Valores incorrectos");
-                }
-                else
-                {
-                    InsertarNotas(DI, PMDM, AD);
-                }
+                int notaDI = Convert.ToInt32(DI);
+                int notaPMDM = Convert.ToInt32(PMDM);
+                int notaAD = Convert.ToInt32(AD);
+                InsertarNotas(notaDI, notaPMDM, notaAD);
             }
-            else
-            {
-                MessageBox.Show("Selecciona una fila antes de intentar obtener el valor de la celda.");
-            }
+            
         }
     }
 }
