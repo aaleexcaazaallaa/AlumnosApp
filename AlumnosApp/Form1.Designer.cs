@@ -380,9 +380,10 @@
             // 
             // buttonEliminar
             // 
-            this.buttonEliminar.Location = new System.Drawing.Point(41, 367);
+            this.buttonEliminar.Font = new System.Drawing.Font("Microsoft JhengHei", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonEliminar.Location = new System.Drawing.Point(41, 359);
             this.buttonEliminar.Name = "buttonEliminar";
-            this.buttonEliminar.Size = new System.Drawing.Size(708, 23);
+            this.buttonEliminar.Size = new System.Drawing.Size(708, 36);
             this.buttonEliminar.TabIndex = 2;
             this.buttonEliminar.Text = "Eliminar";
             this.buttonEliminar.UseVisualStyleBackColor = true;
@@ -390,9 +391,10 @@
             // 
             // buttonModificar
             // 
-            this.buttonModificar.Location = new System.Drawing.Point(41, 340);
+            this.buttonModificar.Font = new System.Drawing.Font("Microsoft JhengHei", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonModificar.Location = new System.Drawing.Point(41, 312);
             this.buttonModificar.Name = "buttonModificar";
-            this.buttonModificar.Size = new System.Drawing.Size(708, 23);
+            this.buttonModificar.Size = new System.Drawing.Size(708, 36);
             this.buttonModificar.TabIndex = 1;
             this.buttonModificar.Text = "Modificar";
             this.buttonModificar.UseVisualStyleBackColor = true;
@@ -410,7 +412,7 @@
             this.dataGridView1.DataSource = this.alumnosBindingSource;
             this.dataGridView1.Location = new System.Drawing.Point(0, 0);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(800, 334);
+            this.dataGridView1.Size = new System.Drawing.Size(800, 303);
             this.dataGridView1.TabIndex = 0;
             // 
             // nombreDataGridViewTextBoxColumn
@@ -515,6 +517,7 @@
             // 
             // buttonBorrarEvaluacion
             // 
+            this.buttonBorrarEvaluacion.Font = new System.Drawing.Font("Microsoft JhengHei", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonBorrarEvaluacion.Location = new System.Drawing.Point(12, 341);
             this.buttonBorrarEvaluacion.Name = "buttonBorrarEvaluacion";
             this.buttonBorrarEvaluacion.Size = new System.Drawing.Size(776, 37);
@@ -525,6 +528,7 @@
             // 
             // buttonModificarEvaluacion
             // 
+            this.buttonModificarEvaluacion.Font = new System.Drawing.Font("Microsoft JhengHei", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonModificarEvaluacion.Location = new System.Drawing.Point(12, 298);
             this.buttonModificarEvaluacion.Name = "buttonModificarEvaluacion";
             this.buttonModificarEvaluacion.Size = new System.Drawing.Size(776, 36);
@@ -791,12 +795,12 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.panelListarEvaluaciones);
+            this.Controls.Add(this.panelListarAlumnos);
             this.Controls.Add(this.panelNotas);
             this.Controls.Add(this.panelAlumnosAltas);
             this.Controls.Add(this.panelAltaEvaluacion);
-            this.Controls.Add(this.panelListarEvaluaciones);
             this.Controls.Add(this.panelInicio);
-            this.Controls.Add(this.panelListarAlumnos);
             this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.menuStrip2);
             this.MainMenuStrip = this.menuStrip1;
