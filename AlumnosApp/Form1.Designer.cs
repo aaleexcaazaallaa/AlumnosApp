@@ -80,10 +80,10 @@
             this.practicaDataSet1 = new AlumnosApp.practicaDataSet1();
             this.evaluacionesTableAdapter = new AlumnosApp.practicaDataSet1TableAdapters.EvaluacionesTableAdapter();
             this.panelNotas = new System.Windows.Forms.Panel();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.buttonBorrarNotas = new System.Windows.Forms.Button();
+            this.buttonModificarNotas = new System.Windows.Forms.Button();
+            this.buttonVerNotas = new System.Windows.Forms.Button();
+            this.buttonInsertarNotas = new System.Windows.Forms.Button();
             this.dataGridView3 = new System.Windows.Forms.DataGridView();
             this.idAlumnoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.idEvaluacionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -92,7 +92,7 @@
             this.aDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.notasBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.practicaDataSet4 = new AlumnosApp.practicaDataSet4();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.comboBoxEvaluaciones = new System.Windows.Forms.ComboBox();
             this.evaluacionesBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.practicaDataSet3 = new AlumnosApp.practicaDataSet3();
             this.checkBoxTotal = new System.Windows.Forms.CheckBox();
@@ -241,7 +241,7 @@
             // consultarToolStripMenuItem
             // 
             this.consultarToolStripMenuItem.Name = "consultarToolStripMenuItem";
-            this.consultarToolStripMenuItem.Size = new System.Drawing.Size(125, 22);
+            this.consultarToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.consultarToolStripMenuItem.Text = "Consultar";
             this.consultarToolStripMenuItem.Click += new System.EventHandler(this.consultarToolStripMenuItem_Click);
             // 
@@ -571,12 +571,12 @@
             // 
             // panelNotas
             // 
-            this.panelNotas.Controls.Add(this.button4);
-            this.panelNotas.Controls.Add(this.button3);
-            this.panelNotas.Controls.Add(this.button2);
-            this.panelNotas.Controls.Add(this.button1);
+            this.panelNotas.Controls.Add(this.buttonBorrarNotas);
+            this.panelNotas.Controls.Add(this.buttonModificarNotas);
+            this.panelNotas.Controls.Add(this.buttonVerNotas);
+            this.panelNotas.Controls.Add(this.buttonInsertarNotas);
             this.panelNotas.Controls.Add(this.dataGridView3);
-            this.panelNotas.Controls.Add(this.comboBox1);
+            this.panelNotas.Controls.Add(this.comboBoxEvaluaciones);
             this.panelNotas.Controls.Add(this.checkBoxTotal);
             this.panelNotas.Controls.Add(this.listBox1);
             this.panelNotas.Controls.Add(this.label10);
@@ -589,41 +589,46 @@
             this.panelNotas.Size = new System.Drawing.Size(800, 402);
             this.panelNotas.TabIndex = 9;
             // 
-            // button4
+            // buttonBorrarNotas
             // 
-            this.button4.Location = new System.Drawing.Point(709, 347);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(79, 37);
-            this.button4.TabIndex = 19;
-            this.button4.Text = "button4";
-            this.button4.UseVisualStyleBackColor = true;
+            this.buttonBorrarNotas.Font = new System.Drawing.Font("Microsoft JhengHei", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonBorrarNotas.Location = new System.Drawing.Point(709, 347);
+            this.buttonBorrarNotas.Name = "buttonBorrarNotas";
+            this.buttonBorrarNotas.Size = new System.Drawing.Size(79, 37);
+            this.buttonBorrarNotas.TabIndex = 19;
+            this.buttonBorrarNotas.Text = "BORRAR";
+            this.buttonBorrarNotas.UseVisualStyleBackColor = true;
             // 
-            // button3
+            // buttonModificarNotas
             // 
-            this.button3.Location = new System.Drawing.Point(608, 347);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(79, 37);
-            this.button3.TabIndex = 18;
-            this.button3.Text = "button3";
-            this.button3.UseVisualStyleBackColor = true;
+            this.buttonModificarNotas.Font = new System.Drawing.Font("Microsoft JhengHei", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonModificarNotas.Location = new System.Drawing.Point(608, 347);
+            this.buttonModificarNotas.Name = "buttonModificarNotas";
+            this.buttonModificarNotas.Size = new System.Drawing.Size(79, 37);
+            this.buttonModificarNotas.TabIndex = 18;
+            this.buttonModificarNotas.Text = "EDITAR";
+            this.buttonModificarNotas.UseVisualStyleBackColor = true;
             // 
-            // button2
+            // buttonVerNotas
             // 
-            this.button2.Location = new System.Drawing.Point(506, 347);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(79, 37);
-            this.button2.TabIndex = 17;
-            this.button2.Text = "button2";
-            this.button2.UseVisualStyleBackColor = true;
+            this.buttonVerNotas.Font = new System.Drawing.Font("Microsoft JhengHei", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonVerNotas.Location = new System.Drawing.Point(506, 347);
+            this.buttonVerNotas.Name = "buttonVerNotas";
+            this.buttonVerNotas.Size = new System.Drawing.Size(79, 37);
+            this.buttonVerNotas.TabIndex = 17;
+            this.buttonVerNotas.Text = "VER";
+            this.buttonVerNotas.UseVisualStyleBackColor = true;
             // 
-            // button1
+            // buttonInsertarNotas
             // 
-            this.button1.Location = new System.Drawing.Point(405, 347);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(79, 37);
-            this.button1.TabIndex = 16;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
+            this.buttonInsertarNotas.Font = new System.Drawing.Font("Microsoft JhengHei", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonInsertarNotas.Location = new System.Drawing.Point(405, 347);
+            this.buttonInsertarNotas.Name = "buttonInsertarNotas";
+            this.buttonInsertarNotas.Size = new System.Drawing.Size(79, 37);
+            this.buttonInsertarNotas.TabIndex = 16;
+            this.buttonInsertarNotas.Text = "INSERTAR";
+            this.buttonInsertarNotas.UseVisualStyleBackColor = true;
+            this.buttonInsertarNotas.Click += new System.EventHandler(this.buttonInsertarNotas_Click);
             // 
             // dataGridView3
             // 
@@ -683,14 +688,14 @@
             this.practicaDataSet4.DataSetName = "practicaDataSet4";
             this.practicaDataSet4.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
-            // comboBox1
+            // comboBoxEvaluaciones
             // 
-            this.comboBox1.DataSource = this.evaluacionesBindingSource1;
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(405, 90);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(383, 21);
-            this.comboBox1.TabIndex = 14;
+            this.comboBoxEvaluaciones.DataSource = this.evaluacionesBindingSource1;
+            this.comboBoxEvaluaciones.FormattingEnabled = true;
+            this.comboBoxEvaluaciones.Location = new System.Drawing.Point(405, 90);
+            this.comboBoxEvaluaciones.Name = "comboBoxEvaluaciones";
+            this.comboBoxEvaluaciones.Size = new System.Drawing.Size(383, 21);
+            this.comboBoxEvaluaciones.TabIndex = 14;
             // 
             // evaluacionesBindingSource1
             // 
@@ -708,9 +713,9 @@
             this.checkBoxTotal.Font = new System.Drawing.Font("Microsoft JhengHei UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.checkBoxTotal.Location = new System.Drawing.Point(168, 354);
             this.checkBoxTotal.Name = "checkBoxTotal";
-            this.checkBoxTotal.Size = new System.Drawing.Size(79, 24);
+            this.checkBoxTotal.Size = new System.Drawing.Size(84, 24);
             this.checkBoxTotal.TabIndex = 13;
-            this.checkBoxTotal.Text = "TOTAL";
+            this.checkBoxTotal.Text = "TODOS";
             this.checkBoxTotal.UseVisualStyleBackColor = true;
             // 
             // listBox1
@@ -795,9 +800,9 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.panelNotas);
             this.Controls.Add(this.panelListarEvaluaciones);
             this.Controls.Add(this.panelListarAlumnos);
-            this.Controls.Add(this.panelNotas);
             this.Controls.Add(this.panelAlumnosAltas);
             this.Controls.Add(this.panelAltaEvaluacion);
             this.Controls.Add(this.panelInicio);
@@ -895,12 +900,12 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button buttonBorrarNotas;
+        private System.Windows.Forms.Button buttonModificarNotas;
+        private System.Windows.Forms.Button buttonVerNotas;
+        private System.Windows.Forms.Button buttonInsertarNotas;
         private System.Windows.Forms.DataGridView dataGridView3;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox comboBoxEvaluaciones;
         private System.Windows.Forms.CheckBox checkBoxTotal;
         private System.Windows.Forms.ListBox listBox1;
         private practicaDataSet2 practicaDataSet2;

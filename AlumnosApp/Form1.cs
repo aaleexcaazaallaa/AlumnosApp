@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace AlumnosApp
 {
@@ -70,6 +71,8 @@ namespace AlumnosApp
         {
             panelNotas.Visible = true; 
             this.cargarAlumnosEnNotas();
+            cargarComboBoxEvaluaciones();
+            listarNotasEvaluaciones();
         }
 
         private void eliminarPaneles()
@@ -359,6 +362,140 @@ namespace AlumnosApp
             catch (Exception ex)
             {
                 MessageBox.Show("Can not open the connection ! " + ex.ToString());
+            }
+        }
+
+        private void cargarComboBoxEvaluaciones()
+        {
+            string connetionString = null;
+            OleDbConnection connection;
+            OleDbCommand command;
+            OleDbDataAdapter adapter = new OleDbDataAdapter();
+            DataSet ds = new DataSet();
+            int i = 0;
+            string ole = null;
+            connetionString = "Provider=Microsoft.ACE.OLEDB.12.0; Data Source=|DataDirectory|\\practica.accdb";
+            ole = "select Id, Evaluacion from Evaluaciones";
+            connection = new OleDbConnection(connetionString);
+            try
+            {
+                connection.Open();
+                command = new OleDbCommand(ole, connection);
+                adapter.SelectCommand = command;
+                adapter.Fill(ds);
+                adapter.Dispose();
+                command.Dispose();
+                connection.Close();
+                comboBoxEvaluaciones.DataSource = ds.Tables[0];
+                comboBoxEvaluaciones.ValueMember = "Id";
+                comboBoxEvaluaciones.DisplayMember = "Evaluacion";
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Can not open connection ! " + ex.ToString());
+            }
+        }
+
+        private void listarNotasEvaluaciones()
+        {
+            string connetionString = "Provider=Microsoft.ACE.OLEDB.12.0; Data Source=|DataDirectory|\\practica.accdb";
+            string sentencia = "select id_Alumno ,id_Evaluacion, DI, PMDM, AD from Notas where id_Evaluacion = '" + comboBoxEvaluaciones.SelectedValue.ToString() + "' AND id_Alumno = '" + listBox1.SelectedValue.ToString() + "'";
+            OleDbConnection connection;
+            connection = new OleDbConnection(connetionString);
+            try
+            {
+                connection.Open();
+                this.oleCommand = new OleDbCommand(sentencia, connection);
+                this.oleAdapter = new OleDbDataAdapter(this.oleCommand);
+                this.oleBuilder = new OleDbCommandBuilder(this.oleAdapter);
+                this.dataSet = new DataSet();
+                this.oleAdapter.Fill(dataSet, "Notas");
+                this.table = dataSet.Tables["Notas"];
+                connection.Close();
+                dataGridView3.DataSource = dataSet.Tables["Notas"];
+                dataGridView3.ReadOnly = false;
+                dataGridView3.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Can not open the connection ! " + ex.ToString());
+            }
+        }
+
+        private void InsertarNotas(int DI, int PMDM, int AD)
+        {
+            string connetionString = "Provider=Microsoft.ACE.OLEDB.12.0; Data Source=|DataDirectory|\\practica.accdb";
+            string sentencia = "insert into Notas (DI,PMDM,AD) values ('" + DI + "'," + "'" + PMDM + "'," + AD + ")";
+            OleDbConnection connection;
+            OleDbCommand command;
+            connection = new OleDbConnection(connetionString);
+            try
+            {
+                connection.Open();
+                command = new OleDbCommand(sentencia, connection);
+                command.ExecuteNonQuery();
+                command.Dispose();
+                connection.Close();
+                MessageBox.Show("Notas Insertadas");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Can not open connection ! " + ex.ToString());
+            }
+        }
+
+        private void buttonInsertarNotas_Click(object sender, EventArgs e)
+        {
+            DataGridViewRow filaSeleccionada = dataGridView3.CurrentRow;
+
+            if (filaSeleccionada != null)
+            {
+                // Verifica y asigna valores a DI, PMDM y AD
+                int DI, PMDM, AD;
+
+                if (filaSeleccionada.Cells[0].Value != null && filaSeleccionada.Cells[0].Value != DBNull.Value)
+                {
+                    DI = Convert.ToInt32(filaSeleccionada.Cells[0].Value);
+                }
+                else
+                {
+                    MessageBox.Show("El valor en la primera celda no puede ser nulo.");
+                    return; // Sal del método si hay un problema
+                }
+
+                if (filaSeleccionada.Cells[1].Value != null && filaSeleccionada.Cells[1].Value != DBNull.Value)
+                {
+                    PMDM = Convert.ToInt32(filaSeleccionada.Cells[1].Value);
+                }
+                else
+                {
+                    MessageBox.Show("El valor en la segunda celda no puede ser nulo.");
+                    return;
+                }
+
+                if (filaSeleccionada.Cells[2].Value != null && filaSeleccionada.Cells[2].Value != DBNull.Value)
+                {
+                    AD = Convert.ToInt32(filaSeleccionada.Cells[2].Value);
+                }
+                else
+                {
+                    MessageBox.Show("El valor en la tercera celda no puede ser nulo.");
+                    return;
+                }
+
+                // Ahora, puedes continuar con la lógica de validación y llamada a InsertarNotas
+                if (DI <= 0 || DI >= 10 || PMDM <= 0 || PMDM >= 10 || AD <= 0 || AD >= 10)
+                {
+                    MessageBox.Show("Valores incorrectos");
+                }
+                else
+                {
+                    InsertarNotas(DI, PMDM, AD);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Selecciona una fila antes de intentar obtener el valor de la celda.");
             }
         }
     }
