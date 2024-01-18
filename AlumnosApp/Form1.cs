@@ -446,27 +446,36 @@ namespace AlumnosApp
 
         private void buttonInsertarNotas_Click(object sender, EventArgs e)
         {
-            // Verifica y asigna valores a DI, PMDM y AD
-            int fila = dataGridView3.SelectedRows[0].Index;
-                
-            // Acceder a los valores de las celdas en la fila seleccionada
-            DataGridViewRow filaSeleccionada = dataGridView3.Rows[fila];
-
-            // Acceder al valor de una celda específica (por ejemplo, primera celda en la fila)
-            object DI = filaSeleccionada.Cells[0].Value;
-            object PMDM = filaSeleccionada.Cells[1].Value;
-            object AD = filaSeleccionada.Cells[2].Value;
-
-            // Puedes convertir el valor a un tipo específico si es necesario
-            // Supongamos que la celda contiene un valor entero
-            if (DI != DBNull.Value && DI != null && PMDM != DBNull.Value && PMDM != null && AD != DBNull.Value && AD != null)
+            if (dataGridView3.SelectedRows.Count > 0)
             {
-                int notaDI = Convert.ToInt32(DI);
-                int notaPMDM = Convert.ToInt32(PMDM);
-                int notaAD = Convert.ToInt32(AD);
-                InsertarNotas(notaDI, notaPMDM, notaAD);
+                DataGridViewRow filaSeleccionada = dataGridView3.SelectedRows[0];
+
+                string DI = filaSeleccionada.Cells[0].Value.ToString();
+                string PMDM = filaSeleccionada.Cells[1].Value.ToString();
+                string AD = filaSeleccionada.Cells[2].Value.ToString();
+
+                if (DI != null && PMDM != null && AD != null)
+                {
+                    if (int.TryParse(DI.ToString(), out int notaDI) &&
+                        int.TryParse(PMDM.ToString(), out int notaPMDM) &&
+                        int.TryParse(AD.ToString(), out int notaAD))
+                    {
+                        InsertarNotas(notaDI, notaPMDM, notaAD);
+                    }
+                    else
+                    {
+                        MessageBox.Show("No se pueden convertir todas las notas a números enteros");
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Al menos una celda tiene un valor nulo");
+                }
             }
-            
+            else
+            {
+                MessageBox.Show("No se ha seleccionado una fila");
+            }
         }
     }
 }
