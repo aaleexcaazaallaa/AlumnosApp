@@ -27,9 +27,6 @@ namespace AlumnosApp
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            // TODO: esta línea de código carga datos en la tabla 'practicaDataSet8.Alumnos' Puede moverla o quitarla según sea necesario.
-            this.alumnosTableAdapter4.Fill(this.practicaDataSet8.Alumnos);
-            
             //AltasNotas();
             eliminarPaneles();
             mostrarPanelInicio();
@@ -426,6 +423,7 @@ namespace AlumnosApp
             }
             
         }
+        
         private void listarTodasNotasEvaluaciones()
         {
             string connetionString = "Provider=Microsoft.ACE.OLEDB.12.0; Data Source=|DataDirectory|\\practica.accdb";
@@ -451,6 +449,7 @@ namespace AlumnosApp
                 MessageBox.Show("Can not open the connection ! " + ex.ToString());
             }
         }
+       
         //Metodo para insertar notas para probar
         private void AltasNotas()
         {
