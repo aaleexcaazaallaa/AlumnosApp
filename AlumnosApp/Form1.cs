@@ -346,7 +346,7 @@ namespace AlumnosApp
                 connection.Close();
                 listBox1.DataSource = dataSet.Tables["Alumnos"];
                 listBox1.ValueMember = "Id";
-                table.Columns.Add("NombreCompleto", typeof(string), "Nombre + ' ' + Apellidos");
+                table.Columns.Add("NombreCompleto", typeof(string), "Id + ' - ' + Nombre + ' ' + Apellidos");
                 listBox1.DisplayMember = "NombreCompleto";
             }
             catch (Exception ex)
@@ -454,7 +454,7 @@ namespace AlumnosApp
         private void AltasNotas()
         {
             string connetionString = "Provider=Microsoft.ACE.OLEDB.12.0; Data Source=|DataDirectory|\\practica.accdb";
-            string sentencia = "insert into Notas (id_Alumno, id_Evaluacion,DI,PMDM,AD) values (" + 1 + "," + 1 + "," + 7 + "," + 6 + ","+ 5+ ")";
+            string sentencia = "insert into Notas (id_Alumno, id_Evaluacion,DI,PMDM,AD) values (" + 6 + "," + 5 + "," + 10 + "," + 10 + "," + 10 + ")";
             OleDbConnection connection;
             OleDbCommand command;
             connection = new OleDbConnection(connetionString);
