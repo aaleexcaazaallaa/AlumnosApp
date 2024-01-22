@@ -80,16 +80,8 @@
             this.practicaDataSet1 = new AlumnosApp.practicaDataSet1();
             this.evaluacionesTableAdapter = new AlumnosApp.practicaDataSet1TableAdapters.EvaluacionesTableAdapter();
             this.panelNotas = new System.Windows.Forms.Panel();
-            this.buttonBorrarNotas = new System.Windows.Forms.Button();
-            this.buttonModificarNotas = new System.Windows.Forms.Button();
             this.buttonVerNotas = new System.Windows.Forms.Button();
-            this.buttonInsertarNotas = new System.Windows.Forms.Button();
             this.dataGridView3 = new System.Windows.Forms.DataGridView();
-            this.idAlumnoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.idEvaluacionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dIDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.pMDMDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.aDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.notasBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.practicaDataSet4 = new AlumnosApp.practicaDataSet4();
             this.comboBoxEvaluaciones = new System.Windows.Forms.ComboBox();
@@ -108,6 +100,15 @@
             this.evaluacionesTableAdapter1 = new AlumnosApp.practicaDataSet3TableAdapters.EvaluacionesTableAdapter();
             this.notasTableAdapter = new AlumnosApp.practicaDataSet4TableAdapters.NotasTableAdapter();
             this.alumnosTableAdapter2 = new AlumnosApp.practicaDataSet5TableAdapters.AlumnosTableAdapter();
+            this.practicaDataSet6 = new AlumnosApp.practicaDataSet6();
+            this.alumnosBindingSource3 = new System.Windows.Forms.BindingSource(this.components);
+            this.alumnosTableAdapter3 = new AlumnosApp.practicaDataSet6TableAdapters.AlumnosTableAdapter();
+            this.practicaDataSet7 = new AlumnosApp.practicaDataSet7();
+            this.evaluacionesBindingSource2 = new System.Windows.Forms.BindingSource(this.components);
+            this.evaluacionesTableAdapter2 = new AlumnosApp.practicaDataSet7TableAdapters.EvaluacionesTableAdapter();
+            this.practicaDataSet8 = new AlumnosApp.practicaDataSet8();
+            this.alumnosBindingSource4 = new System.Windows.Forms.BindingSource(this.components);
+            this.alumnosTableAdapter4 = new AlumnosApp.practicaDataSet8TableAdapters.AlumnosTableAdapter();
             this.menuStrip2.SuspendLayout();
             this.panelAlumnosAltas.SuspendLayout();
             this.panelInicio.SuspendLayout();
@@ -130,6 +131,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.practicaDataSet5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.alumnosBindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.practicaDataSet2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.practicaDataSet6)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.alumnosBindingSource3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.practicaDataSet7)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.evaluacionesBindingSource2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.practicaDataSet8)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.alumnosBindingSource4)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -241,7 +248,7 @@
             // consultarToolStripMenuItem
             // 
             this.consultarToolStripMenuItem.Name = "consultarToolStripMenuItem";
-            this.consultarToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.consultarToolStripMenuItem.Size = new System.Drawing.Size(125, 22);
             this.consultarToolStripMenuItem.Text = "Consultar";
             this.consultarToolStripMenuItem.Click += new System.EventHandler(this.consultarToolStripMenuItem_Click);
             // 
@@ -571,10 +578,7 @@
             // 
             // panelNotas
             // 
-            this.panelNotas.Controls.Add(this.buttonBorrarNotas);
-            this.panelNotas.Controls.Add(this.buttonModificarNotas);
             this.panelNotas.Controls.Add(this.buttonVerNotas);
-            this.panelNotas.Controls.Add(this.buttonInsertarNotas);
             this.panelNotas.Controls.Add(this.dataGridView3);
             this.panelNotas.Controls.Add(this.comboBoxEvaluaciones);
             this.panelNotas.Controls.Add(this.checkBoxTotal);
@@ -589,94 +593,24 @@
             this.panelNotas.Size = new System.Drawing.Size(800, 402);
             this.panelNotas.TabIndex = 9;
             // 
-            // buttonBorrarNotas
-            // 
-            this.buttonBorrarNotas.Font = new System.Drawing.Font("Microsoft JhengHei", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonBorrarNotas.Location = new System.Drawing.Point(709, 347);
-            this.buttonBorrarNotas.Name = "buttonBorrarNotas";
-            this.buttonBorrarNotas.Size = new System.Drawing.Size(79, 37);
-            this.buttonBorrarNotas.TabIndex = 19;
-            this.buttonBorrarNotas.Text = "BORRAR";
-            this.buttonBorrarNotas.UseVisualStyleBackColor = true;
-            // 
-            // buttonModificarNotas
-            // 
-            this.buttonModificarNotas.Font = new System.Drawing.Font("Microsoft JhengHei", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonModificarNotas.Location = new System.Drawing.Point(608, 347);
-            this.buttonModificarNotas.Name = "buttonModificarNotas";
-            this.buttonModificarNotas.Size = new System.Drawing.Size(79, 37);
-            this.buttonModificarNotas.TabIndex = 18;
-            this.buttonModificarNotas.Text = "EDITAR";
-            this.buttonModificarNotas.UseVisualStyleBackColor = true;
-            // 
             // buttonVerNotas
             // 
             this.buttonVerNotas.Font = new System.Drawing.Font("Microsoft JhengHei", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonVerNotas.Location = new System.Drawing.Point(506, 347);
+            this.buttonVerNotas.Location = new System.Drawing.Point(559, 342);
             this.buttonVerNotas.Name = "buttonVerNotas";
             this.buttonVerNotas.Size = new System.Drawing.Size(79, 37);
             this.buttonVerNotas.TabIndex = 17;
             this.buttonVerNotas.Text = "VER";
             this.buttonVerNotas.UseVisualStyleBackColor = true;
-            // 
-            // buttonInsertarNotas
-            // 
-            this.buttonInsertarNotas.Font = new System.Drawing.Font("Microsoft JhengHei", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonInsertarNotas.Location = new System.Drawing.Point(405, 347);
-            this.buttonInsertarNotas.Name = "buttonInsertarNotas";
-            this.buttonInsertarNotas.Size = new System.Drawing.Size(79, 37);
-            this.buttonInsertarNotas.TabIndex = 16;
-            this.buttonInsertarNotas.Text = "INSERTAR";
-            this.buttonInsertarNotas.UseVisualStyleBackColor = true;
-            this.buttonInsertarNotas.Click += new System.EventHandler(this.buttonInsertarNotas_Click);
+            this.buttonVerNotas.Click += new System.EventHandler(this.buttonVerNotas_Click);
             // 
             // dataGridView3
             // 
-            this.dataGridView3.AutoGenerateColumns = false;
             this.dataGridView3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView3.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.idAlumnoDataGridViewTextBoxColumn,
-            this.idEvaluacionDataGridViewTextBoxColumn,
-            this.dIDataGridViewTextBoxColumn,
-            this.pMDMDataGridViewTextBoxColumn,
-            this.aDDataGridViewTextBoxColumn});
-            this.dataGridView3.DataSource = this.notasBindingSource;
             this.dataGridView3.Location = new System.Drawing.Point(405, 117);
             this.dataGridView3.Name = "dataGridView3";
             this.dataGridView3.Size = new System.Drawing.Size(383, 217);
             this.dataGridView3.TabIndex = 15;
-            // 
-            // idAlumnoDataGridViewTextBoxColumn
-            // 
-            this.idAlumnoDataGridViewTextBoxColumn.DataPropertyName = "Id_Alumno";
-            this.idAlumnoDataGridViewTextBoxColumn.HeaderText = "Id_Alumno";
-            this.idAlumnoDataGridViewTextBoxColumn.Name = "idAlumnoDataGridViewTextBoxColumn";
-            this.idAlumnoDataGridViewTextBoxColumn.Visible = false;
-            // 
-            // idEvaluacionDataGridViewTextBoxColumn
-            // 
-            this.idEvaluacionDataGridViewTextBoxColumn.DataPropertyName = "Id_Evaluacion";
-            this.idEvaluacionDataGridViewTextBoxColumn.HeaderText = "Id_Evaluacion";
-            this.idEvaluacionDataGridViewTextBoxColumn.Name = "idEvaluacionDataGridViewTextBoxColumn";
-            this.idEvaluacionDataGridViewTextBoxColumn.Visible = false;
-            // 
-            // dIDataGridViewTextBoxColumn
-            // 
-            this.dIDataGridViewTextBoxColumn.DataPropertyName = "DI";
-            this.dIDataGridViewTextBoxColumn.HeaderText = "DI";
-            this.dIDataGridViewTextBoxColumn.Name = "dIDataGridViewTextBoxColumn";
-            // 
-            // pMDMDataGridViewTextBoxColumn
-            // 
-            this.pMDMDataGridViewTextBoxColumn.DataPropertyName = "PMDM";
-            this.pMDMDataGridViewTextBoxColumn.HeaderText = "PMDM";
-            this.pMDMDataGridViewTextBoxColumn.Name = "pMDMDataGridViewTextBoxColumn";
-            // 
-            // aDDataGridViewTextBoxColumn
-            // 
-            this.aDDataGridViewTextBoxColumn.DataPropertyName = "AD";
-            this.aDDataGridViewTextBoxColumn.HeaderText = "AD";
-            this.aDDataGridViewTextBoxColumn.Name = "aDDataGridViewTextBoxColumn";
             // 
             // notasBindingSource
             // 
@@ -717,6 +651,7 @@
             this.checkBoxTotal.TabIndex = 13;
             this.checkBoxTotal.Text = "TODOS";
             this.checkBoxTotal.UseVisualStyleBackColor = true;
+            this.checkBoxTotal.CheckedChanged += new System.EventHandler(this.checkBoxTotal_CheckedChanged);
             // 
             // listBox1
             // 
@@ -795,6 +730,48 @@
             // 
             this.alumnosTableAdapter2.ClearBeforeFill = true;
             // 
+            // practicaDataSet6
+            // 
+            this.practicaDataSet6.DataSetName = "practicaDataSet6";
+            this.practicaDataSet6.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // alumnosBindingSource3
+            // 
+            this.alumnosBindingSource3.DataMember = "Alumnos";
+            this.alumnosBindingSource3.DataSource = this.practicaDataSet6;
+            // 
+            // alumnosTableAdapter3
+            // 
+            this.alumnosTableAdapter3.ClearBeforeFill = true;
+            // 
+            // practicaDataSet7
+            // 
+            this.practicaDataSet7.DataSetName = "practicaDataSet7";
+            this.practicaDataSet7.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // evaluacionesBindingSource2
+            // 
+            this.evaluacionesBindingSource2.DataMember = "Evaluaciones";
+            this.evaluacionesBindingSource2.DataSource = this.practicaDataSet7;
+            // 
+            // evaluacionesTableAdapter2
+            // 
+            this.evaluacionesTableAdapter2.ClearBeforeFill = true;
+            // 
+            // practicaDataSet8
+            // 
+            this.practicaDataSet8.DataSetName = "practicaDataSet8";
+            this.practicaDataSet8.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // alumnosBindingSource4
+            // 
+            this.alumnosBindingSource4.DataMember = "Alumnos";
+            this.alumnosBindingSource4.DataSource = this.practicaDataSet8;
+            // 
+            // alumnosTableAdapter4
+            // 
+            this.alumnosTableAdapter4.ClearBeforeFill = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -839,6 +816,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.practicaDataSet5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.alumnosBindingSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.practicaDataSet2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.practicaDataSet6)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.alumnosBindingSource3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.practicaDataSet7)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.evaluacionesBindingSource2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.practicaDataSet8)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.alumnosBindingSource4)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -900,10 +883,7 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Button buttonBorrarNotas;
-        private System.Windows.Forms.Button buttonModificarNotas;
         private System.Windows.Forms.Button buttonVerNotas;
-        private System.Windows.Forms.Button buttonInsertarNotas;
         private System.Windows.Forms.DataGridView dataGridView3;
         private System.Windows.Forms.ComboBox comboBoxEvaluaciones;
         private System.Windows.Forms.CheckBox checkBoxTotal;
@@ -920,11 +900,15 @@
         private practicaDataSet5 practicaDataSet5;
         private System.Windows.Forms.BindingSource alumnosBindingSource2;
         private practicaDataSet5TableAdapters.AlumnosTableAdapter alumnosTableAdapter2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn idAlumnoDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn idEvaluacionDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dIDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn pMDMDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn aDDataGridViewTextBoxColumn;
+        private practicaDataSet6 practicaDataSet6;
+        private System.Windows.Forms.BindingSource alumnosBindingSource3;
+        private practicaDataSet6TableAdapters.AlumnosTableAdapter alumnosTableAdapter3;
+        private practicaDataSet7 practicaDataSet7;
+        private System.Windows.Forms.BindingSource evaluacionesBindingSource2;
+        private practicaDataSet7TableAdapters.EvaluacionesTableAdapter evaluacionesTableAdapter2;
+        private practicaDataSet8 practicaDataSet8;
+        private System.Windows.Forms.BindingSource alumnosBindingSource4;
+        private practicaDataSet8TableAdapters.AlumnosTableAdapter alumnosTableAdapter4;
     }
 }
 

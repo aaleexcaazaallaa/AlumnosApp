@@ -27,16 +27,10 @@ namespace AlumnosApp
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            // TODO: esta línea de código carga datos en la tabla 'practicaDataSet5.Alumnos' Puede moverla o quitarla según sea necesario.
-            this.alumnosTableAdapter2.Fill(this.practicaDataSet5.Alumnos);
-            // TODO: esta línea de código carga datos en la tabla 'practicaDataSet4.Notas' Puede moverla o quitarla según sea necesario.
-            this.notasTableAdapter.Fill(this.practicaDataSet4.Notas);
-            // TODO: esta línea de código carga datos en la tabla 'practicaDataSet3.Evaluaciones' Puede moverla o quitarla según sea necesario.
-            this.evaluacionesTableAdapter1.Fill(this.practicaDataSet3.Evaluaciones);
-            // TODO: esta línea de código carga datos en la tabla 'practicaDataSet2.Alumnos' Puede moverla o quitarla según sea necesario.
-            this.alumnosTableAdapter1.Fill(this.practicaDataSet2.Alumnos);
-            // TODO: esta línea de código carga datos en la tabla 'practicaDataSet1.Evaluaciones' Puede moverla o quitarla según sea necesario.
-            this.evaluacionesTableAdapter.Fill(this.practicaDataSet1.Evaluaciones);
+            // TODO: esta línea de código carga datos en la tabla 'practicaDataSet8.Alumnos' Puede moverla o quitarla según sea necesario.
+            this.alumnosTableAdapter4.Fill(this.practicaDataSet8.Alumnos);
+            
+            //AltasNotas();
             eliminarPaneles();
             mostrarPanelInicio();
         }
@@ -72,7 +66,6 @@ namespace AlumnosApp
             panelNotas.Visible = true; 
             this.cargarAlumnosEnNotas();
             cargarComboBoxEvaluaciones();
-            listarNotasEvaluaciones();
         }
 
         private void eliminarPaneles()
@@ -399,7 +392,7 @@ namespace AlumnosApp
         private void listarNotasEvaluaciones()
         {
             string connetionString = "Provider=Microsoft.ACE.OLEDB.12.0; Data Source=|DataDirectory|\\practica.accdb";
-            string sentencia = "select id_Alumno ,id_Evaluacion, DI, PMDM, AD from Notas where id_Evaluacion = '" + comboBoxEvaluaciones.SelectedValue.ToString() + "' AND id_Alumno = '" + listBox1.SelectedValue.ToString() + "'";
+            string sentencia = "select DI, PMDM, AD from Notas where id_Evaluacion = " + comboBoxEvaluaciones.SelectedValue.ToString() + " AND id_Alumno = " + listBox1.SelectedValue.ToString() ;
             OleDbConnection connection;
             connection = new OleDbConnection(connetionString);
             try
@@ -413,7 +406,7 @@ namespace AlumnosApp
                 this.table = dataSet.Tables["Notas"];
                 connection.Close();
                 dataGridView3.DataSource = dataSet.Tables["Notas"];
-                dataGridView3.ReadOnly = false;
+                dataGridView3.ReadOnly = true;
                 dataGridView3.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             }
             catch (Exception ex)
@@ -422,10 +415,47 @@ namespace AlumnosApp
             }
         }
 
-        private void InsertarNotas(int DI, int PMDM, int AD)
+        private void buttonVerNotas_Click(object sender, EventArgs e)
+        {
+            if (checkBoxTotal.Checked) {
+                listarTodasNotasEvaluaciones();
+            }
+            else
+            {
+                listarNotasEvaluaciones();
+            }
+            
+        }
+        private void listarTodasNotasEvaluaciones()
         {
             string connetionString = "Provider=Microsoft.ACE.OLEDB.12.0; Data Source=|DataDirectory|\\practica.accdb";
-            string sentencia = "insert into Notas (DI,PMDM,AD) values ('" + DI + "'," + "'" + PMDM + "'," + AD + ")";
+            string sentencia = "select id_Alumno , DI, PMDM, AD from Notas where id_Evaluacion = " + comboBoxEvaluaciones.SelectedValue.ToString() ;
+            OleDbConnection connection;
+            connection = new OleDbConnection(connetionString);
+            try
+            {
+                connection.Open();
+                this.oleCommand = new OleDbCommand(sentencia, connection);
+                this.oleAdapter = new OleDbDataAdapter(this.oleCommand);
+                this.oleBuilder = new OleDbCommandBuilder(this.oleAdapter);
+                this.dataSet = new DataSet();
+                this.oleAdapter.Fill(dataSet, "Notas");
+                this.table = dataSet.Tables["Notas"];
+                connection.Close();
+                dataGridView3.DataSource = dataSet.Tables["Notas"];
+                dataGridView3.ReadOnly = true;
+                dataGridView3.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Can not open the connection ! " + ex.ToString());
+            }
+        }
+        //Metodo para insertar notas para probar
+        private void AltasNotas()
+        {
+            string connetionString = "Provider=Microsoft.ACE.OLEDB.12.0; Data Source=|DataDirectory|\\practica.accdb";
+            string sentencia = "insert into Notas (id_Alumno, id_Evaluacion,DI,PMDM,AD) values (" + 1 + "," + 1 + "," + 7 + "," + 6 + ","+ 5+ ")";
             OleDbConnection connection;
             OleDbCommand command;
             connection = new OleDbConnection(connetionString);
@@ -436,7 +466,6 @@ namespace AlumnosApp
                 command.ExecuteNonQuery();
                 command.Dispose();
                 connection.Close();
-                MessageBox.Show("Notas Insertadas");
             }
             catch (Exception ex)
             {
@@ -444,38 +473,10 @@ namespace AlumnosApp
             }
         }
 
-        private void buttonInsertarNotas_Click(object sender, EventArgs e)
+
+        private void checkBoxTotal_CheckedChanged(object sender, EventArgs e)
         {
-            if (dataGridView3.SelectedRows.Count > 0)
-            {
-                DataGridViewRow filaSeleccionada = dataGridView3.SelectedRows[0];
-
-                string DI = filaSeleccionada.Cells[0].Value.ToString();
-                string PMDM = filaSeleccionada.Cells[1].Value.ToString();
-                string AD = filaSeleccionada.Cells[2].Value.ToString();
-
-                if (DI != null && PMDM != null && AD != null)
-                {
-                    if (int.TryParse(DI.ToString(), out int notaDI) &&
-                        int.TryParse(PMDM.ToString(), out int notaPMDM) &&
-                        int.TryParse(AD.ToString(), out int notaAD))
-                    {
-                        InsertarNotas(notaDI, notaPMDM, notaAD);
-                    }
-                    else
-                    {
-                        MessageBox.Show("No se pueden convertir todas las notas a números enteros");
-                    }
-                }
-                else
-                {
-                    MessageBox.Show("Al menos una celda tiene un valor nulo");
-                }
-            }
-            else
-            {
-                MessageBox.Show("No se ha seleccionado una fila");
-            }
+            listBox1.Enabled = !listBox1.Enabled;
         }
     }
 }

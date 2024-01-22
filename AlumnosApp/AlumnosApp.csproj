@@ -83,6 +83,21 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>practicaDataSet5.xsd</DependentUpon>
     </Compile>
+    <Compile Include="practicaDataSet6.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>practicaDataSet6.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="practicaDataSet7.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>practicaDataSet7.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="practicaDataSet8.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>practicaDataSet8.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Form1.resx">
@@ -162,6 +177,39 @@
     </None>
     <None Include="practicaDataSet5.xss">
       <DependentUpon>practicaDataSet5.xsd</DependentUpon>
+    </None>
+    <None Include="practicaDataSet6.xsc">
+      <DependentUpon>practicaDataSet6.xsd</DependentUpon>
+    </None>
+    <None Include="practicaDataSet6.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>practicaDataSet6.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="practicaDataSet6.xss">
+      <DependentUpon>practicaDataSet6.xsd</DependentUpon>
+    </None>
+    <None Include="practicaDataSet7.xsc">
+      <DependentUpon>practicaDataSet7.xsd</DependentUpon>
+    </None>
+    <None Include="practicaDataSet7.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>practicaDataSet7.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="practicaDataSet7.xss">
+      <DependentUpon>practicaDataSet7.xsd</DependentUpon>
+    </None>
+    <None Include="practicaDataSet8.xsc">
+      <DependentUpon>practicaDataSet8.xsd</DependentUpon>
+    </None>
+    <None Include="practicaDataSet8.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>practicaDataSet8.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="practicaDataSet8.xss">
+      <DependentUpon>practicaDataSet8.xsd</DependentUpon>
     </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
